@@ -1,0 +1,71 @@
+﻿@model MContentViewModel
+@{
+    ViewData["Title"] = "Контент статичных страниц - Изменить запись";
+}
+
+<div class="row d-flex justify-content-center">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <div class="text-center">
+                    <a asp-action="Index">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        Назад к списку
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Id" />
+                            <div class="form-group">
+                                <label asp-for="URL" class="control-label"></label>
+                                <input asp-for="URL" class="form-control form-control-sm" />
+                                <span asp-validation-for="URL" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Title" class="control-label"></label>
+                                <input asp-for="Title" class="form-control form-control-sm" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Layout" class="control-label"></label>
+                                <input asp-for="Layout" class="form-control form-control-sm" />
+                                <span asp-validation-for="Layout" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Body" class="control-label"></label>
+                                <textarea asp-for="Body" class="form-control tinymce" rows="8" cols="15"></textarea>
+                                <span asp-validation-for="Body" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MetaTitle" class="control-label"></label>
+                                <input asp-for="MetaTitle" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MetaDescription" class="control-label"></label>
+                                <input asp-for="MetaDescription" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MetaKeywords" class="control-label"></label>
+                                <input asp-for="MetaKeywords" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block shadow">Подтвердить</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        await Html.RenderPartialAsync("_WysiwygScriptsPartial");
+    }
+}

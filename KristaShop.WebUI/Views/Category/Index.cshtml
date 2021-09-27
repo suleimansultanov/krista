@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Категории - Список";
+}
+
+<div class="col-auto">
+    <a asp-action="Create">Новая запись</a>
+</div>
+<hr />
+<div class="col-12 table-responsive">
+    <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Наименование</th>
+                <th>Видимость</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/Category/Index.js" asp-append-version="true" type="text/javascript"></script>
+}

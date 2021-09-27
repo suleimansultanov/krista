@@ -1,0 +1,58 @@
+﻿<div id="accordion">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-auto mr-auto">
+                    <a class="card-link" data-toggle="collapse" href="#collapseSearch">
+                        <i class="fas fa-search"></i> Поиск
+                    </a>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-sm btn-info" onclick="ResetAllValues()">
+                        <i class="fa fa-eraser"></i> Очистить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="collapseSearch" class="collapse hide" data-parent="#accordion">
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="Articul">Артикул</label>
+                        <input type="text" class="form-control" id="Articul">
+                    </div>
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="Color">Цвет</label>
+                        <select class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" data-actions-box="true" id="Color" asp-items="ViewBag.Colors">
+                            <option value="">Все</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="Size">Размер</label>
+                        <select class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" data-actions-box="true" id="Size" asp-items="ViewBag.Sizes">
+                            <option value="">Все</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="SizeLine">Размерный ряд</label>
+                        <select class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" data-actions-box="true" id="SizeLine" asp-items="ViewBag.SizeLines">
+                            <option value="">Все</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="Catalog">Каталог</label>
+                        <select class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" data-actions-box="true" id="Catalog" asp-items="ViewBag.Catalogs">
+                            <option value="">Все</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="Category">Категория</label>
+                        <select class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" data-actions-box="true" id="Category" asp-items="ViewBag.Categories">
+                            <option value="">Все</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "IndexType";
+}
+
+<div class="col-auto">
+    <button type="button" onclick="Create()" class="btn btn-outline-primary mr-3" data-toggle="modal" data-target="#create-edit-modal">
+        <i class="fas fa-plus-circle"></i> Новая запись
+    </button>
+</div>
+<partial name="_FormPartial" />
+<hr />
+<div class="col-12 table-responsive">
+    <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Скидка в $</th>
+                <th>Активность</th>
+                <th>Действует от</th>
+                <th>Действует до</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/Discount/IndexType.js" asp-append-version="true" type="text/javascript"></script>
+}

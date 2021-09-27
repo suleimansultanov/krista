@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200129085829_add_nomenclature.cs" />
+    <Compile Remove="Migrations\20200129085829_add_nomenclature.Designer.cs" />
+    <Compile Remove="Migrations\20200130083236_add_nomenclature.cs" />
+    <Compile Remove="Migrations\20200130083236_add_nomenclature.Designer.cs" />
+    <Compile Remove="Migrations\20200130085433_add_nomenclature.cs" />
+    <Compile Remove="Migrations\20200130085433_add_nomenclature.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.0" />
+  </ItemGroup>
+
+</Project>

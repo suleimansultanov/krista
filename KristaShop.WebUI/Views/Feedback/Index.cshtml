@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Сообщения - список";
+}
+
+<style>
+    td.details-control {
+        background: url('../lib/datatables/images/details_open.png') no-repeat center center;
+        cursor: pointer;
+    }
+
+    tr.shown td.details-control {
+        background: url('../lib/datatables/images/details_close.png') no-repeat center center;
+    }
+</style>
+<hr />
+<div class="col-12 table-responsive">
+    <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th>№</th>
+                <th>ФИО</th>
+                <th>№ телефона</th>
+                <th>Почта</th>
+                <th>Дата</th>
+                <th>Прочитано</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/Feedback/Index.js" asp-append-version="true" type="text/javascript"></script>
+}

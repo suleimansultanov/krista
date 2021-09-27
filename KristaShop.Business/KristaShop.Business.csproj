@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KristaShop.Common\KristaShop.Common.csproj" PrivateAssets="All" />
+    <ProjectReference Include="..\KristaShop.DataAccess\KristaShop.DataAccess.csproj" PrivateAssets="All" />
+    <ProjectReference Include="..\KristaShop.DataReadOnly\KristaShop.DataReadOnly.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Пользователи";
+}
+<partial name="_LinkPartial" />
+<div class="col-12 table-responsive">
+    <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Логин</th>
+                <th>ФИО клиента</th>
+                <th>Город</th>
+                <th>Телефон</th>
+                <th>Название ТЦ</th>
+                <th>Почта</th>
+                <th>Статус</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/Identity/Index.js" asp-append-version="true" type="text/javascript"></script>
+}

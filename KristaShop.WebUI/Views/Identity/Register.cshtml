@@ -1,0 +1,41 @@
+﻿@model RegHashViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<form asp-action="Register" data-ajax-method="post" data-ajax="true" data-ajax-failure="createError" data-ajax-success="createSuccess" data-ajax-update="result" id="create-form">
+    <div class="modal-body">
+        <div class="form-group">
+            <label asp-for="Reg.ClientFullName" class="control-label"></label>
+            <input asp-for="Reg.ClientFullName" class="form-control form-control-sm" />
+            <span asp-validation-for="Reg.ClientFullName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Reg.CityId" class="control-label"></label>
+            <select asp-for="Reg.CityId" asp-items="ViewBag.Cities" class="form-control form-control-sm"></select>
+            <span asp-validation-for="Reg.CityId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Reg.ShopName" class="control-label"></label>
+            <input asp-for="Reg.ShopName" class="form-control form-control-sm" />
+            <span asp-validation-for="Reg.ShopName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Reg.PhoneNumber" class="control-label"></label>
+            <input asp-for="Reg.PhoneNumber" class="form-control form-control-sm" />
+            <span asp-validation-for="Reg.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Reg.Email" class="control-label"></label>
+            <input asp-for="Reg.Email" class="form-control form-control-sm" />
+            <span asp-validation-for="Reg.Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-sm btn-primary btn-block">Подтвердить</button>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/js/Identity/Register.js" asp-append-version="true" type="text/javascript"></script>
+}

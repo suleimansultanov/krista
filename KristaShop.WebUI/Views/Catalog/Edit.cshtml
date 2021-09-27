@@ -1,0 +1,84 @@
+﻿@model CatalogViewModel
+@{
+    ViewData["Title"] = "Каталоги - Изменить запись";
+}
+
+<div class="row d-flex justify-content-center">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <div class="text-center">
+                    <a asp-action="Index">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        Назад к списку
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="Order" />
+                            <div class="form-group">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" asp-for="IsDiscount">
+                                    <label class="custom-control-label" asp-for="IsDiscount"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" asp-for="IsVisible">
+                                    <label class="custom-control-label" asp-for="IsVisible"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control form-control-sm" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="OrderForm" class="control-label"></label>
+                                <select asp-for="OrderForm" asp-items="Html.GetEnumSelectList<OrderFormType>()" class="form-control form-control-sm"></select>
+                                <span asp-validation-for="OrderForm" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Uri" class="control-label"></label>
+                                <input asp-for="Uri" class="form-control form-control-sm" />
+                                <span asp-validation-for="Uri" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label"></label>
+                                <textarea asp-for="Description" class="form-control form-control-sm" cols="40" rows="5"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MetaTitle" class="control-label"></label>
+                                <input asp-for="MetaTitle" class="form-control form-control-sm" />
+                                <span asp-validation-for="MetaTitle" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MetaKeywords" class="control-label"></label>
+                                <input asp-for="MetaKeywords" class="form-control form-control-sm" />
+                                <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MetaDescription" class="control-label"></label>
+                                <textarea asp-for="MetaDescription" class="form-control form-control-sm" cols="40" rows="5"></textarea>
+                                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block shadow">Подтвердить</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

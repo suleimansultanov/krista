@@ -1,0 +1,51 @@
+﻿<div id="accordion-user">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-auto mr-auto">
+                    <a class="card-link" data-toggle="collapse" href="#collapseUserSearch">
+                        <i class="fas fa-search"></i> Поиск
+                    </a>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-sm btn-info" onclick="ResetUserAllValues()">
+                        <i class="fa fa-eraser"></i> Очистить
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="collapseUserSearch" class="collapse hide" data-parent="#accordion-user">
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="Login">Логин</label>
+                        <input type="text" class="form-control user-input" id="Login">
+                    </div>
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="ClientName">ФИО</label>
+                        <input type="text" class="form-control user-input" id="ClientName">
+                    </div>
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="CityName">Город</label>
+                        <input type="text" class="form-control user-input" id="CityName">
+                    </div>
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="PhoneNumber">Телефон</label>
+                        <input type="text" class="form-control user-input" id="PhoneNumber">
+                    </div>
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="ShopName">Название ТЦ</label>
+                        <input type="text" class="form-control user-input" id="ShopName">
+                    </div>
+                    <div class="form-group col-sm-4 col-md-4 col-lg-2">
+                        <label for="Status">Статус</label>
+                        <select class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" data-actions-box="true" id="Status" 
+                                asp-items="Html.GetEnumSelectList<UserStatus>()">
+                            <option value="">Все</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

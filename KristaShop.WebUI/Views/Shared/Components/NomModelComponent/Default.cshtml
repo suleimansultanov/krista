@@ -1,0 +1,78 @@
+﻿@model KristaShop.WebUI.Models.NomViewModel
+<style>
+    .image-upload > input {
+        display: none;
+    }
+</style>
+<div class="container-fluid p-3">
+    <div class="row">
+        <div class="col">
+            <form asp-action="AddModel" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="NomId" />
+                    <div class="col-2">
+                        <div class="image-upload">
+                            <label asp-for="Image">
+                                @if (string.IsNullOrEmpty(Model.ImagePath))
+                                {
+                                    <img id="Image-img" src="~/dist/img/krista.png" class="img-fluid img-thumbnail" width="300" />
+                                }
+                                else
+                                {
+                                    <img id="Image-img" src="@Model.ImagePath" class="img-fluid img-thumbnail" width="300" />
+                                }
+                            </label>
+                            <input asp-for="Image" type="file" />
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="form-group">
+                            <label asp-for="Description" class="control-label"></label>
+                            <textarea asp-for="Description" class="form-control form-control-sm" cols="40" rows="7"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label asp-for="Catalogs" class="control-label"></label>
+                                <select asp-for="Catalogs" asp-items="ViewBag.Catalogs" class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" multiple data-actions-box="true">
+                                </select>
+                            </div>
+                            <div class="form-group col">
+                                <label asp-for="Categories" class="control-label"></label>
+                                <select asp-for="Categories" asp-items="ViewBag.Categories" class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" multiple data-actions-box="true">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label asp-for="LinkName" class="control-label"></label>
+                                <input asp-for="LinkName" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group col">
+                                <label asp-for="MetaTitle" class="control-label"></label>
+                                <input asp-for="MetaTitle" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MetaKeywords" class="control-label"></label>
+                            <input asp-for="MetaKeywords" class="form-control form-control-sm" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MetaDescription" class="control-label"></label>
+                            <textarea asp-for="MetaDescription" class="form-control form-control-sm" cols="40" rows="7"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <a asp-action="Index" class="btn btn-info btn-block shadow">Назад</a>
+                            </div>
+                            <div class="form-group col">
+                                <button type="submit" class="btn btn-success btn-block shadow">Сохранить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

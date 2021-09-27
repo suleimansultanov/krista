@@ -1,0 +1,243 @@
+﻿@model KristaShop.WebUI.Models.NomViewModel
+@{
+    ViewData["Title"] = $"Изменение модели - {Model.ItemName}";
+}
+@section Styles {
+    <link type="text/css" href="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
+    <link href="~/css/CModel/Edit.css" asp-append-version="true" rel="stylesheet" />
+}
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="NomId" />
+    <input type="hidden" asp-for="Articul" />
+    <input type="hidden" asp-for="ItemName" />
+    <div class="row">
+        <div class="col-auto mr-auto">
+            <h4>@ViewData["Title"]</h4>
+        </div>
+        <div class="col-auto">
+            <a asp-action="Index" class="btn btn-sm btn-primary mr-1" type="button"><i class="fas fa-arrow-circle-left"></i> Назад</a>
+            <button class="btn btn-sm btn-success" type="submit"><i class="fas fa-chevron-circle-down"></i> Сохранить</button>
+        </div>
+    </div>
+    <div class="p-4 mt-3 bg-white rounded shadow">
+        <!-- Rounded tabs -->
+        <ul id="myTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
+            <li class="nav-item flex-sm-fill">
+                <a id="model-tab" data-toggle="tab" href="#model" role="tab" aria-controls="model" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active">Инфо о Модели</a>
+            </li>
+            <li class="nav-item flex-sm-fill">
+                <a id="photo-tab" data-toggle="tab" href="#photo" role="tab" aria-controls="photo" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Фото</a>
+            </li>
+            <li class="nav-item flex-sm-fill">
+                <a id="video-tab" data-toggle="tab" href="#video" role="tab" aria-controls="video" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Видео</a>
+            </li>
+            <li class="nav-item flex-sm-fill">
+                <a id="metaseo-tab" data-toggle="tab" href="#metaseo" role="tab" aria-controls="metaseo" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Мета</a>
+            </li>
+            <li class="nav-item flex-sm-fill">
+                <a id="hiddenctlgs-tab" data-toggle="tab" href="#hiddenctlgs" role="tab" aria-controls="hiddenctlgs" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Каталог</a>
+            </li>
+            <li class="nav-item flex-sm-fill">
+                <a id="hiddenctgrs-tab" data-toggle="tab" href="#hiddenctgrs" role="tab" aria-controls="hiddenctgrs" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Категории</a>
+            </li>
+            <li class="nav-item flex-sm-fill">
+                <a id="shamount-tab" data-toggle="tab" href="#shamount" role="tab" aria-controls="shamount" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Кол-во на складе</a>
+            </li>
+            <li class="nav-item flex-sm-fill">
+                <a id="price-tab" data-toggle="tab" href="#price" role="tab" aria-controls="price" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Цена</a>
+            </li>
+            <li class="nav-item flex-sm-fill">
+                <a id="hiddenusers-tab" data-toggle="tab" href="#hiddenusers" role="tab" aria-controls="hiddenusers" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Скрыто для пользователей</a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div id="model" role="tabpanel" aria-labelledby="model-tab" class="container tab-pane fade p-4 show active">
+                <div class="form-row">
+                    <div class="col-3 d-flex justify-content-center">
+                        <div class="image-upload">
+                            <label asp-for="Image">
+                                @if (string.IsNullOrEmpty(Model.ImagePath))
+                                {
+                                <img id="Image-img" src="~/Gallery/diamond.gif?size=250" class="img-fluid img-thumbnail" />
+                                }
+                                else
+                                {
+                                <img id="Image-img" src="@Model.ImagePath?size=300X450" class="img-fluid img-thumbnail" />
+                                }
+                            </label>
+                            <input asp-for="Image" type="file" />
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="form-group">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" asp-for="IsVisible">
+                                <label class="custom-control-label" asp-for="IsVisible"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description" class="control-label"></label>
+                            <textarea asp-for="Description" class="form-control form-control-sm" cols="40" rows="7"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DefaultPrice" class="control-label"></label>
+                            <input asp-for="DefaultPrice" class="form-control form-control-sm" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Catalogs" class="control-label"></label>
+                            <select asp-for="Catalogs" asp-items="ViewBag.Catalogs" class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" multiple data-actions-box="true">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Categories" class="control-label"></label>
+                            <select asp-for="Categories" asp-items="ViewBag.Categories" class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" multiple data-actions-box="true">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="photo" role="tabpanel" aria-labelledby="photo-tab" class="container tab-pane fade px-4 py-5">
+                <div class="custom-file py-4">
+                    <input type="file" id="Photos" name="Photos" class="custom-file-input" multiple>
+                    <label class="custom-file-label" for="Photos" data-browse="Обзор">Выберите фото, одно или несколько</label>
+                </div>
+
+                <div class="modal fade" id="edit-photo-modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title w-100 font-weight-bold">Добавить цвет</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" name="PhotoId" id="PhotoId" />
+                                <div class="form-group">
+                                    <label for="ColorId" class="control-label"></label>
+                                    <select id="ColorId" name="ColorId" asp-items="ViewBag.Colors" class="form-control">
+                                        <option value="">Нет цвета</option>
+                                    </select>
+                                </div>
+                                <div class="form-group text-center">
+                                    <input type="button" onclick="EditPhotoEvent()" class="btn btn-success btn-sm btn-block" value="Сохранить">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 table-responsive">
+                    <table id="photos-table" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Фото</th>
+                                <th>Цвет</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div id="video" role="tabpanel" aria-labelledby="video-tab" class="container tab-pane fade p-4">
+                <div class="input-group col">
+                    <input asp-for="VideoUrl" class="form-control form-control-sm" placeholder="Ссылка на видео, пример: https://www.youtube.com/watch?v=S2cPMa6fRq8" aria-label="Ссылка на видео" aria-describedby="LinkName-addon">
+                    <div class="input-group-append">
+                        <button class="btn btn-sm btn-outline-secondary" onclick="ChangeVideo()" type="button">Предпросмотр</button>
+                    </div>
+                </div>
+                <br />
+                <div class="col d-flex justify-content-center">
+                    @if (string.IsNullOrEmpty(Model.VideoUrl))
+                    {
+                    <iframe id="videoFrame" width="600" height="400" frameborder="0"
+                            src="https://www.youtube.com/embed/cTo03E5qD4I">
+                    </iframe>
+                    }
+                    else
+                    {
+                    <iframe id="videoFrame" width="600" height="400" frameborder="0"
+                            src="@Model.VideoUrl">
+                    </iframe>
+                    }
+                </div>
+            </div>
+            <div id="metaseo" role="tabpanel" aria-labelledby="metaseo-tab" class="container tab-pane fade p-4">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label asp-for="LinkName" class="control-label"></label>
+                            <input asp-for="LinkName" class="form-control form-control-sm" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MetaTitle" class="control-label"></label>
+                            <input asp-for="MetaTitle" class="form-control form-control-sm" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MetaKeywords" class="control-label"></label>
+                            <input asp-for="MetaKeywords" class="form-control form-control-sm" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MetaDescription" class="control-label"></label>
+                            <textarea asp-for="MetaDescription" class="form-control form-control-sm" cols="40" rows="7"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="hiddenctlgs" role="tabpanel" aria-labelledby="hiddenctlgs-tab" class="container tab-pane fade px-4 py-5">
+                <div class="form-group">
+                    <select id="NomCatalogs" name="NomCatalogs" asp-items="ViewBag.NomCatalogs" title="Выберите один из следующих..."
+                            class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" data-actions-box="true">
+                    </select>
+                </div>
+                <div id="div-ctlgs"></div>
+            </div>
+            <div id="hiddenctgrs" role="tabpanel" aria-labelledby="hiddenctgrs-tab" class="container tab-pane fade px-4 py-5">
+                <div class="form-group">
+                    <select id="NomCategories" name="NomCategories" asp-items="ViewBag.NomCategories" title="Выберите один из следующих..."
+                            class="selectpicker form-control show-menu-arrow" data-size="10" data-live-search="true" data-actions-box="true">
+                    </select>
+                </div>
+                <div id="div-ctgrs"></div>
+            </div>
+            <div id="shamount" role="tabpanel" aria-labelledby="shamount-tab" class="container tab-pane fade px-4 py-5">
+                <div id="div-shamounts"></div>
+            </div>
+            <div id="price" role="tabpanel" aria-labelledby="price-tab" class="container tab-pane fade px-4 py-5">
+                <div id="div-prices"></div>
+            </div>
+            <div id="hiddenusers" role="tabpanel" aria-labelledby="hiddenusers-tab" class="container tab-pane fade px-4 py-5">
+                <div class="col-12 table-responsive">
+                    <table id="users-table" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" name="select_all" value="1" id="example-select-all"></th>
+                                <th>ФИО</th>
+                                <th>Логин</th>
+                                <th>Город</th>
+                                <th>Магазин</th>
+                                <th>Видимость</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- End rounded tabs -->
+
+@section Scripts {
+    <script type="text/javascript" src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
+    <script src="~/js/CModel/Edit.js" asp-append-version="true" type="text/javascript"></script>
+    <script src="~/js/CModel/EditPhotos.js" asp-append-version="true" type="text/javascript"></script>
+    <script src="~/js/CModel/EditCatalogs.js" asp-append-version="true" type="text/javascript"></script>
+    <script src="~/js/CModel/EditCategories.js" asp-append-version="true" type="text/javascript"></script>
+    <script src="~/js/CModel/EditSHAmounts.js" asp-append-version="true" type="text/javascript"></script>
+    <script src="~/js/CModel/EditPrices.js" asp-append-version="true" type="text/javascript"></script>
+    <script src="~/js/CModel/EditUsers.js" asp-append-version="true" type="text/javascript"></script>
+}

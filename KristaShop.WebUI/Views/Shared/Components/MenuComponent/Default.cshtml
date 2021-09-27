@@ -1,0 +1,14 @@
+﻿@using KristaShop.Common.Helpers
+@model IEnumerable<KristaShop.Business.DTOs.MenuItemDTO>
+
+@foreach (var item in Model)
+{
+    <li class="nav-item">
+        <a href="@UrlHelper.GetURL(item.ControllerName, item.ActionName)" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == item.ControllerName ? "active" : "")">
+            <i class="nav-icon fas @item.Icon"></i>
+            <p>
+                @item.Title
+            </p>
+        </a>
+    </li>
+}
